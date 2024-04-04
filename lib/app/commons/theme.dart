@@ -5,16 +5,159 @@ class DefaultTheme {
   static Color get base100Color => const Color(0xFFFFFFFF);
   static Color get base900Color => const Color.fromARGB(255, 21, 24, 29);
   static Color get darkColor => const Color(0xFF121212);
+  static ThemeData get darkTheme {
+    return ThemeData(
+      brightness: Brightness.dark,
+      scaffoldBackgroundColor: darkColor,
+      primaryColor: primaryColorDark,
+      primaryColorDark: primaryColorDark,
+      primaryColorLight: primaryColorDark,
+      visualDensity: VisualDensity.adaptivePlatformDensity,
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          foregroundColor: darkColor,
+          backgroundColor: primaryColorDark,
+          padding: const EdgeInsets.symmetric(
+            vertical: 16,
+            horizontal: 20,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+      ),
+      appBarTheme: AppBarTheme(
+        color: darkColor,
+        elevation: 0,
+        iconTheme: IconThemeData(
+          color: primaryColorDark,
+        ),
+        titleTextStyle: TextStyle(
+          color: base100Color,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      fontFamily: "Inter",
+      textTheme: TextTheme(
+        displayLarge: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+          color: base100Color,
+        ),
+        displayMedium: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          color: base100Color,
+        ),
+        displaySmall: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: base100Color,
+        ),
+        headlineMedium: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+          color: base100Color,
+        ),
+        headlineSmall: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.bold,
+          color: base100Color,
+        ),
+        titleLarge: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.bold,
+          color: base100Color,
+        ),
+        bodyLarge: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.normal,
+          color: base100Color,
+        ),
+        bodyMedium: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.normal,
+          color: base100Color,
+        ),
+        bodySmall: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.normal,
+          color: base100Color,
+        ),
+        labelLarge: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+          color: base100Color,
+        ),
+        labelMedium: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.bold,
+          color: base100Color,
+        ),
+        labelSmall: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.bold,
+          color: base100Color,
+        ),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        // prefixIconColor: base100Color,
+        // prefixStyle: TextStyle(
+        //   color: base100Color,
+        // ),
+        contentPadding: const EdgeInsets.symmetric(
+          vertical: 16,
+          horizontal: 20,
+        ),
+        fillColor: base900Color,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(
+            color: base100Color,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(
+            color: primaryColorDark,
+          ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(
+            color: base900Color,
+          ),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(
+            color: errorColor,
+          ),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(
+            color: errorColor,
+          ),
+        ),
+      ),
+    );
+  }
+
   static Color get errorColor => const Color(0xFFF87171);
   static Color get grayColor => const Color.fromARGB(255, 212, 212, 212);
   static Color get infoColor => const Color(0xFFBAE6FD);
   static Color get neutralColor => const Color(0xFFFFFFFF);
-  static Color get primaryColor => const Color(0xff8F57FF);
-  static Color get primaryColorDark => const Color(0xFF4A1DA1);
+  static Color get primaryColor => const Color.fromARGB(255, 10, 102, 241);
+  static Color get primaryColorDark => const Color.fromARGB(255, 3, 33, 78);
   static Color get secondaryColor => const Color(0xffEEE5FF);
   static Color get successColor => const Color(0xFF4ADE80);
+
   static ThemeData get theme {
     return ThemeData(
+      brightness: Brightness.light,
       scaffoldBackgroundColor: neutralColor,
       primaryColor: primaryColor,
       primaryColorDark: primaryColorDark,

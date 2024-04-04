@@ -8,8 +8,7 @@ class CustomButton extends StatelessWidget {
   final Color? backgroundColor;
   final Color? foregroundColor;
   final double borderRadius;
-  final double paddingVertical;
-  final double paddingHorizontal;
+  final EdgeInsets contentPadding;
   final Size fixedSize;
   const CustomButton({
     Key? key,
@@ -21,8 +20,10 @@ class CustomButton extends StatelessWidget {
     this.backgroundColor,
     this.foregroundColor,
     this.borderRadius = 10,
-    this.paddingVertical = 10,
-    this.paddingHorizontal = 20,
+    this.contentPadding = const EdgeInsets.symmetric(
+      horizontal: 10,
+      vertical: 5,
+    ),
   }) : super(key: key);
 
   @override
@@ -42,11 +43,9 @@ class CustomButton extends StatelessWidget {
         foregroundColor: MaterialStateProperty.all<Color>(
           foregroundColor ?? Theme.of(context).primaryColor,
         ),
+        minimumSize: MaterialStateProperty.all<Size>(fixedSize),
         padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-          EdgeInsets.symmetric(
-            horizontal: paddingHorizontal,
-            vertical: paddingVertical,
-          ),
+          contentPadding,
         ),
         backgroundColor: MaterialStateProperty.all<Color>(
           backgroundColor ?? Colors.transparent,

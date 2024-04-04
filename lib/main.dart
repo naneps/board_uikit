@@ -13,7 +13,8 @@ void main() async {
       title: "Board UIKit",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
-      theme: DefaultTheme.theme,
+      darkTheme: DefaultTheme.darkTheme,
+      themeMode: Get.isDarkMode ? ThemeMode.dark : ThemeMode.light,
       debugShowCheckedModeBanner: false,
     ),
   );

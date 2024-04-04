@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 
-class BoardTabletView extends GetView {
-  const BoardTabletView({Key? key}) : super(key: key);
+class BoardDesktopView extends GetView {
+  const BoardDesktopView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BoardTabletView'),
+        title: const Text('BoardDesktopView'),
         centerTitle: true,
       ),
       body: const Center(
         child: Text(
-          'BoardTabletView is working',
+          'BoardDesktopView is working',
           style: TextStyle(fontSize: 20),
         ),
       ),

@@ -5,6 +5,8 @@ class BoardTicketModel {
   String? title;
   String? description;
   String? columnId;
+  String? code;
+  String? number;
   String? boardId;
   List<UserModel>? assignees;
   String? color;
@@ -16,7 +18,10 @@ class BoardTicketModel {
     this.title,
     this.description,
     this.columnId,
+    this.code,
+    this.number,
     this.boardId,
+    this.assignees,
     this.color,
     this.createdAt,
     this.updatedAt,
@@ -31,6 +36,34 @@ class BoardTicketModel {
     color = json['color'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
+  }
+
+  BoardTicketModel copyWith({
+    String? id,
+    String? title,
+    String? description,
+    String? columnId,
+    String? code,
+    String? number,
+    String? boardId,
+    List<UserModel>? assignees,
+    String? color,
+    String? createdAt,
+    String? updatedAt,
+  }) {
+    return BoardTicketModel(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      columnId: columnId ?? this.columnId,
+      code: code ?? this.code,
+      number: number ?? this.number,
+      boardId: boardId ?? this.boardId,
+      assignees: assignees ?? this.assignees,
+      color: color ?? this.color,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+    );
   }
 
   Map<String, dynamic> toJson() {

@@ -1,3 +1,4 @@
+import 'package:board_uikit/app/commons/helper/date_formatter.dart';
 import 'package:board_uikit/app/models/board_ticket_model.dart';
 import 'package:get/get.dart';
 
@@ -11,6 +12,7 @@ class BoardColumnModel {
   String? createdAt;
   String? updatedAt;
   String? createdBy;
+  final RxBool _isExpanded = false.obs;
   RxList<BoardTicketModel>? tickets = <BoardTicketModel>[].obs;
   BoardColumnModel({
     this.id,
@@ -41,6 +43,10 @@ class BoardColumnModel {
       });
     }
   }
+  int get colorHex => int.parse('0x$color');
+  String get createdAtFormatted => DateFormatter.formatDDMonthYYYY(createdAt!);
+  RxBool get isExpanded => _isExpanded;
+
   // copy with
   BoardColumnModel copyWith({
     String? id,
@@ -66,6 +72,10 @@ class BoardColumnModel {
       createdBy: createdBy ?? this.createdBy,
       tickets: tickets ?? this.tickets,
     );
+  }
+
+  void toggleExpansion() {
+    _isExpanded.value = !_isExpanded.value;
   }
 
   Map<String, dynamic> toJson() {
