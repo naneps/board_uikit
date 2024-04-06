@@ -69,6 +69,8 @@ class BoardController extends GetxController {
     }
   }
 
+  void onDragWillAccept(BoardTicketModel? data, BoardColumnModel column) {}
+
   @override
   void onInit() {
     super.onInit();

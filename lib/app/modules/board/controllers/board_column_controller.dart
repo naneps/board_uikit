@@ -10,6 +10,7 @@ class BoardColumnController extends GetxController {
   final ExpansionTileController expansionTileController =
       ExpansionTileController();
   final boardController = Get.find<BoardController>();
+  RxnBool canDrag = RxnBool(false);
   BoardColumnController({
     this.column,
   });

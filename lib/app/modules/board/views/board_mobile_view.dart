@@ -89,10 +89,9 @@ class BoardMobileView extends GetView<BoardController> {
                               key: ValueKey(column.id),
                               onWillAccept: (data) {
                                 print('onWillAccept');
-                                return true;
+                                return data!.columnId != column.id;
                               },
                               onAccept: (data) {
-                                print('onAccept');
                                 controller.onDragAccept(data, column);
                               },
                               builder: (context, candidateData, rejectedData) =>

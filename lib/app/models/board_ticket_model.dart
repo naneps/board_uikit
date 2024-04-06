@@ -1,4 +1,8 @@
+import 'package:board_uikit/app/models/priority_model.dart';
+import 'package:board_uikit/app/models/severity_model.dart';
+import 'package:board_uikit/app/models/tag_model.dart';
 import 'package:board_uikit/app/models/user_model.dart';
+import 'package:get/get.dart';
 
 class BoardTicketModel {
   String? id;
@@ -8,7 +12,13 @@ class BoardTicketModel {
   String? code;
   String? number;
   String? boardId;
-  List<UserModel>? assignees;
+  RxList<UserModel>? assignees;
+  RxList<TagModel>? tags;
+  Rx<SeverityModel>? severity;
+  Rx<PriorityModel>? priority;
+  String? startDate;
+  String? endDate;
+
   String? color;
   String? createdAt;
   String? updatedAt;
@@ -23,6 +33,11 @@ class BoardTicketModel {
     this.boardId,
     this.assignees,
     this.color,
+    this.tags,
+    this.severity,
+    this.priority,
+    this.startDate,
+    this.endDate,
     this.createdAt,
     this.updatedAt,
   });
@@ -46,7 +61,7 @@ class BoardTicketModel {
     String? code,
     String? number,
     String? boardId,
-    List<UserModel>? assignees,
+    RxList<UserModel>? assignees,
     String? color,
     String? createdAt,
     String? updatedAt,

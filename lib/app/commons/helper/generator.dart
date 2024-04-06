@@ -69,7 +69,9 @@ class Generator {
 
   /// Generates a unique ID based on the current milliseconds since epoch.
   static String generateUniqueId() {
-    return DateTime.now().millisecondsSinceEpoch.toString();
+    return DateTime.now().millisecondsSinceEpoch.toString() +
+        generateRandomString(5) +
+        _secureRandom.nextInt(1000).toString();
   }
 
   /// Adjusts a color component (red, green, or blue) based on darkness/lightness range.

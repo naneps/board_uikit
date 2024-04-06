@@ -2,7 +2,7 @@ import 'package:board_uikit/app/commons/ui/button/common_button.dart';
 import 'package:board_uikit/app/models/board_column_model.dart';
 import 'package:board_uikit/app/modules/board/controllers/board_column_controller.dart';
 import 'package:board_uikit/app/modules/board/controllers/board_controller.dart';
-import 'package:board_uikit/app/modules/board/widgets/ticket_card.dart';
+import 'package:board_uikit/app/modules/board/widgets/draggable_ticket.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
@@ -115,7 +115,7 @@ class BoardColumnCard extends GetView<BoardColumnController> {
               AnimatedContainer(
                 duration: const Duration(milliseconds: 300),
                 constraints: BoxConstraints(
-                  maxHeight: Get.height * 0.5,
+                  maxHeight: Get.height,
                 ),
                 child: ReorderableListView(
                   shrinkWrap: true,
@@ -124,64 +124,20 @@ class BoardColumnCard extends GetView<BoardColumnController> {
                   },
                   children: [
                     ...column.tickets!.map((ticket) {
-                      return Draggable(
-                        hitTestBehavior: HitTestBehavior.translucent,
-                        data: ticket,
-                        onDragStarted: () {
-                          print('onDragStarted');
-                          //   controller.onDragStarted(ticket);
-                        },
-                        onDragEnd: (details) {
-                          print('onDragEnd');
-                          //   controller.onDragEnd(ticket);
-                        },
-                        onDragCompleted: () {
-                          print('onDragCompleted');
-                          //   controller.onDragCompleted(ticket);
-                        },
-                        onDraggableCanceled: (velocity, offset) {
-                          print('onDraggableCanceled');
-                          //   controller.onDraggableCanceled(ticket);
-                        },
-                        onDragUpdate: (details) {
-                          print('onDragUpdate');
-                          //   controller.onDragUpdate(ticket);
-                        },
-                        rootOverlay: true,
-                        key: ValueKey(ticket.id),
-                        feedback: SizedBox(
-                          width: Get.width * 0.9,
-                          height: 120,
-                          child: Center(
-                            child: TicketCard(
-                              ticket: ticket,
-                              key: ValueKey(
-                                ticket.id,
-                              ),
-                            ),
-                          ),
-                        ),
-                        childWhenDragging: Opacity(
-                          opacity: 0.2,
-                          child: TicketCard(
-                            ticket: ticket,
-                            key: ValueKey(
-                              ticket.id,
-                            ),
-                          ),
-                        ),
-                        child: TicketCard(
-                          ticket: ticket,
-                          key: ValueKey(
-                            ticket.id,
-                          ),
-                        ),
-                      )
+                      return DraggableTicket(ticket: ticket)
                           .animate(
                               key: ValueKey(
                             ticket.id,
                           ))
-                          .fadeIn();
+                          .fadeIn(
+                            delay: Duration(
+                              milliseconds:
+                                  (100 * column.tickets!.indexOf(ticket)).clamp(
+                                100,
+                                500,
+                              ),
+                            ),
+                          );
                     }).toList()
                   ],
                 ),
